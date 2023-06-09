@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.296">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>tiffanie_lab_blog – llm_summary</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">tiffanie_lab_blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/tiffanieh" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+
+<section id="llm-in-molecular-biology" class="level1">
+<h1>LLM in molecular biology</h1>
+<p><a href="https://towardsdatascience.com/large-language-models-in-molecular-biology-9eb6b65d8a30">article link</a></p>
+<p>Large language models</p>
+<ul>
+<li><strong>LLM:</strong> a type of neural network that acquires the ability to generate text mirroring human language by scrutinizing vast amounts of textual data
+<ul>
+<li>self-supervised — model learns to predict subsequent word in a sentence based on preceding words</li>
+<li>can identify patterns and try to predict (i.e.&nbsp;advanced form of autocomplete)</li>
+</ul></li>
+</ul>
+<p>Primary types of language models and their unique features:</p>
+<ol type="1">
+<li>************************word grams:************************ predict next word in a sentence based on frequency of word pairs/word bags (sets of words) — disregard context or word order (generates text that bear little resemblance to human text)</li>
+<li>************CNNs:************ analyze text data by considering relationships between adjacent words in a fixed window; good at identifying local patterns, but fall short in capturing long-range dependencies or comprehending complex sentence structures</li>
+<li>**********LSTMs********** (long short-term memory networks): variant of RNNs; store+process information from earlier parts of a text; outperform CNNs in understanding context/managing long-range dependencies, but falter w/ complex sentences+long text</li>
+<li>********attention mechanisms:******** enable models to concentrate on pertinent parts of input when making predictions; number of attention “heads” allow model to focus on different parts of previous text when predicting the next word
+<ol type="1">
+<li>like revisiting key points/details; model refers back to relevant parts of text+incorporates info into current context</li>
+<li>ex. transformers are a class of language models that implement attention mechanisms</li>
+</ol></li>
+<li><strong>LLMs:</strong> models such as GPT-3 are transformers that leverage attention mechanisms+are trained on vast amounts of data; considerable size facilitates the learning of intricate patterns/relationships/context within text; represent the most advanced language models presently available, capable of generating more accurate+coherent responses across a broad spectrum of topics</li>
+</ol>
+<p>2 LLMs that use transformer architecture: BERT+GPT series</p>
+<p>******BERT****** (bidirectional encoder representations from transformers): a series of LLMs by Google+open sourced</p>
+<ul>
+<li>trained using ************************************************masked language modeling************************************************ (hide/“mask” some percentage of input tokens at random, then predict those masked tokens)
+<ul>
+<li>forces model to understand context from both left/right sides of input (bidirectional)</li>
+</ul></li>
+<li>also uses next sentence prediction task</li>
+<li>during training, model is given pairs of sentences+has to predict whether second sentence in pair is the next sentence in the original document</li>
+</ul>
+<p>**********GPT********** (generative pretrained transformer): series of LLMs introduced by OpenAI</p>
+<ul>
+<li>trained using traditional language modeling task of autocomplete (predict next word in sentence)</li>
+<li>only attends to left context (previous tokens) during training (unidirectional)</li>
+<li>generative model that is stronger in tasks involving text generation</li>
+</ul>
+<p>The genetic dogma</p>
+<ul>
+<li>biological trajectory of a human or any other organism is a complex interplay between genetics+environment (DNA and environment individual is exposed to) aka genotype-phenotype-environment</li>
+<li>central dogma of molec bio describes flow of genetic info within living organisms
+<ul>
+<li>source of genetic info: our DNA (exact replica of which is harbored in nucleus of every cell in our body)
+<ul>
+<li>each individual possesses 2 nearly identical copies of human genome (one from mom, one from dad)</li>
+</ul></li>
+</ul></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="LLM in molecular biology be4df94961df4a379d8b520e561a4bf7/Untitled.png" class="quarto-discovered-preview-image img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Untitled</figcaption><p></p>
+</figure>
+</div>
+<ul>
+<li>human chromosome structure: chromatin tightly packed in hierarchical coil structures. from bottom, 146 nucleotide pairs wrapped around histone (like a bead), and histones are coiled and supercoiled to form compact chromosome that fits within the nucleus of a cell</li>
+<li>within genome: ~20,000 genes (DNA segments accountable for protein synthesis)</li>
+<li>~1% of genome codes for proteins while remainder comprises regions controlling gene expression, regions within genes that don’t code for proteins, regions contributing to DNA structure, and “junk” regions of selfish DNA that have “learned” to self-replicate</li>
+<li>central dogma of molec bio maps out molec info flow from genome → expression of genes+subsequent production of proteins (building blocks of life)</li>
+<li>genes expressed within cells by **************************transcription************************** (copies genes into single-stranded molecule mRNA) and ************translation************ (mRNA → amino acid protein sequence); 4-letter nucleotide code of DNA segment translated into 20-amino acid code of protein sequence; protein folds in 3d to form functional protein structure</li>
+<li>transcription → splicing → translation</li>
+<li>splicing: excised segments aka introns; kept regions aka exons make up protein-coding part of mRNA
+<ul>
+<li>each mature mRNA assembled from ~7 exons</li>
+<li>vital in higher organisms b/c a single gene can yield multiple different proteins by assembling different exon combinations during splicing</li>
+</ul></li>
+<li>20,000 genes → 70,000 known standard splice forms+larger # rare/aberrant splice forms</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="LLM in molecular biology be4df94961df4a379d8b520e561a4bf7/Untitled 1.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Untitled</figcaption><p></p>
+</figure>
+</div>
+<ul>
+<li><p>after transcription, mRNA transported to cell’s protein-synthesizing machinery (ribosome) where translation occurs</p>
+<ul>
+<li>mRNA sequence decoded by codons (each corresponds to 1/20 amino acids)</li>
+</ul></li>
+<li><p>amino acids linked together in a chain to form protein sequence → folds into functional, 3d protein structure</p></li>
+<li><p>******************gene regulation:****************** intricate processes that dictate when/where/in what quantity genes are expressed within cell, ensuring timely production of the right proteins in the right amounts</p>
+<ul>
+<li>gene regulation takes place at various levels (structuring of chromatin, chem modifications, through action of specific proteins known as transcription factors) that recruit RNA polymerase and/control when/where/what amount gene will be expressed (requires open chromatin for transcription)</li>
+</ul>
+<img src="LLM in molecular biology be4df94961df4a379d8b520e561a4bf7/Untitled 2.png" class="img-fluid" alt="Untitled"></li>
+<li><p>******Transcription factors (TFs):****** proteins in gene regulation that bind to distinct DNA sequences near/within genes (transcription factor binding sites) and influence recruitment of RNA polymerase, the enzyme tasked w/ mRNA synthesis</p>
+<ul>
+<li>transcription factors modulate expression of target genes, guaranteeing appropriate gene expression in response to diverse cellular signals/environmental conditions</li>
+<li>TFs themselves modulated by TFs, forming complex gene regulatory pathways</li>
+</ul></li>
+<li><p>******************************************Promoters+enhancers:****************************************** DNA regions that play a role in gene expression control</p>
+<ul>
+<li>promoters: located adjacent to start of a gene (upstream/to left of gene start, in chemical direction of DNA)</li>
+<li>enhancers: more distant regulatory elements situated within introns or between genes</li>
+<li>both harbor several TF binding sites</li>
+<li>with assistance of TFs, a gene’s promoter+enhancers form 3-d structures that recruit and regulate RNA polymerase responsible for mRNA synthesis</li>
+</ul></li>
+<li><p>****************************************Chromatin structure:**************************************** an amalgamation of DNA+proteins (histones) that constitute chromosomes</p>
+<ul>
+<li>to fit within each cell’s nucleus, DNA is wound around proteins known as histones</li>
+<li>histones: tetramers (structures formed by assembling 4 copies of histone protein)</li>
+<li>each histone wraps around 146 nucleotide pairs of DNA, creating a rosary structure that subsequently folds into a higher order helical structure (chromatin)</li>
+<li>chromatin organization determines which DNA regions are accessible for gene expression</li>
+<li>for gene expression to occur, chromatin must be unfolded</li>
+<li>tightly packed chromatin prevents gene expression</li>
+</ul></li>
+<li><p>**********************************************Histone modifications:********************************************** chemical modifications (e.g.&nbsp;acetylation/methylation) that can affect the histone beads+influence chromatin structure+gene accessibility</p>
+<ul>
+<li>modifications can either promote or inhibit gene expression depending on type+location of modification</li>
+<li>part of the histone code (sort of epigenetic code) i.e.&nbsp;additional layer of code superimposed on the genetic code inscribed in the DNA</li>
+</ul></li>
+<li><p>**********************************DNA methylation:********************************** chem modification where methyl group added to DNA molec usually at specific cytosine bases</p>
+<ul>
+<li>can influence gene expression by affecting binding of transcription factors or changing chromatin structure, making it more compact/less accessible for transcription</li>
+<li>also part of epigenetic code</li>
+<li>gene regulation is a dynamic process specific to each cell type; diff cells exhibit unique gene expression profiles → perform specialized functions</li>
+<li>through precise control of gene expression cells can respond to enviro stimuli, sustain homeostasis+execute complex processes essential for life</li>
+</ul></li>
+<li><p>********************************************************Bidirectional flow of info:******************************************************** some exceptions to unidirectional flow of info (e.g.&nbsp;central dogma: DNA → RNA → protein):</p>
+<ol type="1">
+<li>reverse transcription: RNA converted back to DNA; facilitated by reverse transcriptase+common in retroviruses such as HIV</li>
+<li>DNA can also be transcribed into RNA molec besides mRNA — tRNA, rRNA, and other types of non-coding RNA, adding another level of complexity to the flow of genetic information</li>
+<li>role of epigenetics by DNA methylation and histone modification</li>
+</ol></li>
+</ul>
+<p>Variation in our DNA</p>
+<ul>
+<li>every individual biologically shaped by interplay between DNA+enviro influences</li>
+<li>DNA variants account for heritability of all our traits</li>
+<li>origins of DNA variants
+<ul>
+<li>primary mechanism: ********************mutations******************** between genomes of 2 parents+germline genomes that both parents contribute to offspring’s genome</li>
+<li>drive genetic variation+account for differences from other species</li>
+<li>most new variants are benign</li>
+<li>smaller fraction can be deleterious esp if they damage a functional region</li>
+<li>even smaller fraction could be beneficial</li>
+</ul></li>
+<li>**********************Selection:********************** deleterious variants/harmful genetic alterations render an organism less “fit” — tend to be statistically eliminated from population
+<ul>
+<li>rare variants generally more likely to be harmful</li>
+</ul></li>
+<li>************Coalescence+DNA sequence conservation:************ effects of selection are highly informative — 2 regions of similarity between genes eventually coalesce — eventually there is an ancestor mammalian individual that had 2 kids that both inherited precise same DNA piece, each leading to each gene today
+<ul>
+<li>mutations that took place in important parts of gene tended to make individuals less fit</li>
+<li>more conserved parts of DNA region more likely to be functionally imporant</li>
+</ul></li>
+<li>**********************************Data generation:********************************** short DNA segments w/ a specific property of interest such as binding a certain TF or being part of the open accessible chromatin are isolated in an experiment+sequenced
+<ul>
+<li>other technologies like MS and affinity-based proteomics can measure the levels of all proteins in a biological sample</li>
+<li>X-ray crystallography provides 3-d protein structures</li>
+</ul></li>
+<li>**************Linking variation to function:************** want to correlate genetic variants across individuals’ genomes w/ specific phenotypes (e.g.&nbsp;presence vs absence of a particular disease) aka ********GWAS********
+<ul>
+<li>identify statistically significant associations of certain genome locations (which could be genes or regulatory regions) with the phenotypes under study</li>
+<li>when measured phenotype isn’t binary but a quantifiable entity, regression can be performed between genomic variation and phenotype, with identified genetic loci termed quantitative trait loci</li>
+<li>besides macroscopic phenotypes (disease status, height, hair color), genetic variation can be associated w/ molecular phenotypes such as gene expression levels (leading to expression quantitative trait loci — eQTLs), protein abundance (results in protein quantitative trait loci — pQTLs) and virtually every other molecular measurement</li>
+<li>likely to be surpassed by application of LLMs</li>
+</ul></li>
+<li>Language models in molec bio</li>
+<li><ul>
+<li>modeling molec bio doesn’t need artificial general intelligence (AGI); i.e.&nbsp;doesn’t require high-level planning, agency, or goals; limited need for combinatorics+algorithmic reasoning
+<ul>
+<li>requires what LLMs are good at: learning stat properties of intricate, noisy sequential data to best predict such data from lossy representations</li>
+</ul></li>
+</ul></li>
+</ul>
+<p>Predicting gene structure</p>
+<ul>
+<li>primary function of DNA: encode genes that are transcribed+translated into proteins</li>
+<li>specific segments of each gene translated into proteins determined by splicing mechanisms (segments are annotated)</li>
+<li>mutations can disrupt precise boundaries of splicing (splice sites)</li>
+<li>rare mutations can significantly impact resulting protein fn+ produce a completely different protein sequence
+<ul>
+<li>account for 10% rare genetic diseases</li>
+</ul></li>
+<li>**********************Fundamental computational task:********************** predicting splice sites+deducing gene structure; implications for diagnosing genetic diseases
+<ul>
+<li>accuracy is not high enough</li>
+</ul></li>
+<li><strong>SpliceAI:</strong> employs earlier techniques for language model (not transformer tech or LLM), where language is DNA sequences
+<ul>
+<li>deep residual CNN</li>
+<li>dilated convolutions to efficiently expand the window size it can handle</li>
+<li>accepts 10k nucleotide windows of human genome as input → predict exact locations of intron-exon boundaries (donor/acceptor sites) — exon-intron and intron-exon borders</li>
+<li>precise-recall AUC: 0.98</li>
+<li>accurate enough to perform mutational analysis in silico — artificially laters any position of DNA and determines whether this change introduces or eliminates a splice site within 10k nucleotides of alteration</li>
+<li>can be utilized to aid genetic diagnosis</li>
+<li>achieved high accuracy by learning biomolec properties of DNA sequence that guide splicing machinery to splice sites (previously less known)</li>
+<li>new question: how to extract biomolec rules that SpliceAI learned+gain insight into underlying biomolec mechanisms?</li>
+</ul></li>
+<li>Predicting protein structure
+<ul>
+<li>protein sequences directly translated from spliced mRNA sequences according to genetic code, then fold into 3d structures</li>
+<li>want to predict protein structure from protein sequence — difficult</li>
+<li>new open-source database (AlphaFold2) that provides high-accuracy structural predictions for various organisms</li>
+</ul></li>
+<li>AlphaFold2 methodology:
+<ul>
+<li>combines CNN operating on protein sequences w/ pairwise co-evolution feature</li>
+<li>identifies pairs of sequence positions that co-vary across related protein seuqneces in diff species to predict 2D contact maps across protein seuqnece
+<ul>
+<li>**************************contact map:************************** score for every pair of positions in sequence — likelihood of 2 positions being in close proximity in 3D</li>
+</ul></li>
+<li>builds on these algorithsms and introduces some new improvements:
+<ul>
+<li>based on transformer LLM architecture — can better capture long-range interactions between AA in protein seq</li>
+<li>novel energy-based score (Amber energy) introduced to directly optimize 3d protein structure → allows for end-to-end differentiable approach during structure optimization step</li>
+<li>improved utilization of coevolutionary features by incorporating multiple sequence alignment (MSA) data boosts model’s ability to identify conserved structural features across homologous protein sequences</li>
+<li>refine: fine-tune predicted protein structures using second model trained on output of first model → more accurate and consistent predictions
+<ul>
+<li><em>note: ensemble?</em></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+<p>Predicting impact of protein variants</p>
+<ul>
+<li>4 million positions in genomes of any 2 individuals vary
+<ul>
+<li>20k such variants located within protein-coding regions</li>
+<li>small fraction of genetic diversity is deleterious → contributes to genetic diseases</li>
+</ul></li>
+<li>clue in determining if a variant is benign: compare human genetics to genetics of close relatives
+<ul>
+<li>proteins conserved by evolution are even more similar on average</li>
+</ul></li>
+<li>search for mutations that confer serious genetic disease should start from mutations not on this list</li>
+<li>use list to observe patterns within protein seq and structures that tend to tolerate variants+patterns that tend not to tolerate variants
+<ul>
+<li>can gain ability to annotate variants in proteins as likely benign+likely pathogenic</li>
+</ul></li>
+<li>PrimateAI-3D: transformer that learns to distinguish between benign+pathogenic variants in human proteins
+<ul>
+<li>accomplished by learning patterns of protein positions where primate variants tend to be present vs protein positions where they tend to be absent</li>
+<li>uses both protein seq data as well as protein 3D models that are either experimentally reconstructed or computationally predicted by tools like AlphaFold+HHpred</li>
+<li>can be applied to diagnosis of rare disease+prioritize variants that are likely deleterious, filter out benign variants</li>
+<li>another application: discovery of genes associated w/ complex diseases
+<ul>
+<li>look for variants likely deleterious according to PrimateAI-3D, then look for abundance of such variants within specific gene across cohort</li>
+<li>genes with genetic “burden” (signal of playing role in the disease)</li>
+</ul></li>
+<li>used primate AI-3D+developed improved rare variant polygenic risk score models (PRS) to identify individuals at high diseases risk</li>
+</ul></li>
+</ul>
+<p>Modeling gene regulation</p>
+<ul>
+<li>molecular components: DNA chromatin structure, chemical alterations within histones that DNA wraps around, attachment of TFs to promoters+enhancers, establishment of 3D DNA structure involving promoters, enhancers, bound transcription factors, and recruitment of RNA polymerase</li>
+</ul>
+<p>Data generation informative of gene regulation</p>
+<ul>
+<li>examples of info obtained, always related to a human cell line or tissue type:
+<ul>
+<li>identify precise locations across entire genome that have open chromatin vs tightly packed chromatin
+<ul>
+<li>2 relevant assays: DNAse-seq and ATAC-seq</li>
+</ul></li>
+<li>pinpoint all locations in genome where a specific transcriptions factor is bound</li>
+<li>identify all location in genome where a specific histone chem modification has occurred</li>
+<li>determining level of mRNA available for a given gene i.e.&nbsp;expression level of particular gene</li>
+</ul></li>
+<li>language models → culminate in transformer-based Enformer tool
+<ul>
+<li>accept DNA sequence near a gene as input, output cell type-specific expression level of this gene for any gene in the genome</li>
+<li>trained on task: given a genome region of 100k nucleotides and a specific cell type, predict available types of experimental data for this region, including status of open/packed chromatin, present histone modifications, specific bound TFs, and level of gene expression</li>
+</ul></li>
+<li>language model ideal (rather than masked language modeling) for supervised training — predict all tracks simultaneously from DNA seq
+<ul>
+<li>incorporates attention mechanisms+collates info from distant regions to predict status of given location</li>
+</ul></li>
+<li>Enformer performs well in predicting gene exp from sequence alone
+<ul>
+<li>however doesn’t achieve reduction of collecting necessary experimental data (highly correlated replicates of same experiment) yet</li>
+<li>can predict changes in gene exp caused by mutations present in diff individuals as well as by mutations artificially introduced through CRISPR experiments</li>
+<li>limitations: perform poorly in predicting effects of distal enhancers+correctly determine direction of effect of personal variants in gene expression</li>
+</ul></li>
+<li>Orca model: language model based on convolutional encoder-decoder architecture that predicts 3D genome structure from proximity data provided by Hi-C experiments
+<ul>
+<li>hierarchical multi-level convolutional encoder, multilevel decoder, predicts DNA structure at 9 levels of resolution for input DNA seq that are as long as the longest human chromosome</li>
+</ul></li>
+</ul>
+<p>Foundation models</p>
+<ul>
+<li>large DL architectures (such as transformer-based GPT models by OpenAI) that encode a vast amount of knowledge
+<ul>
+<li>can be fine-tuned for specific tasks</li>
+</ul></li>
+</ul>
+<p>scGPT: foundation model designed for single-cell transcriptomics, chromatin accessibility, and protein abundance</p>
+<ul>
+<li>trained on single-cell data from 10 million human cells</li>
+<li>each cell contains expression values for a fraction of ~20k human genes</li>
+<li>model learns embeddings of this large cell x gene matrix → provides insights into underlying cellular states+active bio pathways</li>
+<li>concept of “next gene” is unclear in single-cell data
+<ul>
+<li>solution: train model to generate data based on a gene prompt (collection of known gene values)+cell prompt</li>
+<li>starting from known genes, model predicts remaining genes along w/ conf values</li>
+<li>for K iterations, divides those into K bins, and the top 1/K most confident genes are fixed as known genes for next iteration</li>
+</ul></li>
+<li>once trained, fine-tune for numerous downstream tasks: batch correction, cell annotation (ground truth: annotated collections of diff cell types), perturbation prediction (predict cell state after a given set of genes are experimentally perturbed), multiomics (each layer, transcriptome, chromatin, proteome, treated as a different language)</li>
+</ul>
+<p>Nucleotide transformer</p>
+<ul>
+<li>foundational model that focuses on raw DNA sequences</li>
+<li>sequences tokenized into words of 6 characters each (k-mers of length 6)+trained using BERT methodlogy</li>
+<li>training dtaa: ref human genome, 3200 additional diverse human genomes, genomes of 850 other species</li>
+<li>nucleotide transformer applied to 18 downstream tasks that encompass many of previously discussed ones (promoter pred, splice site donor/acceptor pred, histone modifications, etc.)</li>
+<li>predictions made either through probing (embeddings at different layers used as features for simple classifiers — e.g.&nbsp;logistic regression+perceptrons) or light, computationally inexpensive fine-tuning</li>
+</ul>
+<p>Looking forward</p>
+<ul>
+<li>AGI not required (understanding molec bio/link to human health doesn’t need to be an AI task)</li>
+<li>asking AI to learn complex stat properties of existing biological systems</li>
+<li>expect it to learn one-step causality relationships (mutation → malfunction)
+<ul>
+<li>if gene is underexpressed, other genes in cascade in/decrease</li>
+<li>triangulate between correlations across modalities such as DNA variation, protein abundance, and phenotype (Mendelian randomization) and large-scale perturbation experiments → LLM can model cellular states</li>
+<li>genome ↔︎ phenotype</li>
+</ul></li>
+<li>significant gatekeeper: data</li>
+</ul>
+<p>UK Biobank Project (UKB)</p>
+<ul>
+<li>large-scale biobank, biomedical database+research resources containing comprehensive genetic/health info from 1/2 million UK participants</li>
+<li>lots of other large-scale data initiatives</li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
