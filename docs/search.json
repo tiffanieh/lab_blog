@@ -18,7 +18,7 @@
     "href": "index.html",
     "title": "tiffanie lab blog",
     "section": "",
-    "text": "PyTorch tutorial: tensor demo\n\n\n\n\n\n\n\ndemos\n\n\n\n\n\n\n\n\n\n\n\nJun 9, 2023\n\n\ntiffanie\n\n\n\n\n\n\n  \n\n\n\n\nLLM in molecular biology summary\n\n\n\n\n\n\n\nreadings\n\n\n\n\n\n\n\n\n\n\n\nJun 8, 2023\n\n\ntiffanie\n\n\n\n\n\n\nNo matching items"
+    "text": "PyTorch tutorial: tensor demo\n\n\n\n\n\n\n\ndemos\n\n\n\n\n\n\n\n\n\n\n\nJun 9, 2023\n\n\ntiffanie\n\n\n\n\n\n\n  \n\n\n\n\nMatrix algebra basics (numpy) - part 1\n\n\n\n\n\n\n\npractice\n\n\n\n\n\n\n\n\n\n\n\nJun 9, 2023\n\n\ntiffanie\n\n\n\n\n\n\n  \n\n\n\n\nLLM in molecular biology summary\n\n\n\n\n\n\n\nreadings\n\n\n\n\n\n\n\n\n\n\n\nJun 8, 2023\n\n\ntiffanie\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
@@ -26,5 +26,12 @@
     "title": "About",
     "section": "",
     "text": "About this blog"
+  },
+  {
+    "objectID": "posts/mx_alg_basics_pt1_post/index.html",
+    "href": "posts/mx_alg_basics_pt1_post/index.html",
+    "title": "Matrix algebra basics (numpy) - part 1",
+    "section": "",
+    "text": "from numpy import diag, array, eye, outer, trace, kron, allclose, linalg as la\n\nCreating a matrix\n\n\\[\n\\mathbf{L} = \\begin{pmatrix}    1&2&3\\\\    4&5&6\\end{pmatrix}\n\\]\nmx_L = array([[1,2,3],[4,5,6]])\n\nMatrix addition\n\n\\[\n\\begin{align*}\n\\mathbf{A} &=\n\\begin{pmatrix}\n1&2\\\\\n3&4\n\\end{pmatrix}\\\\\n\\mathbf{B} &=\n\\begin{pmatrix}\n5&6\\\\\n7&8\n\\end{pmatrix}\\\\\n\\mathbf{A}+\\mathbf{B} &=\n\\begin{pmatrix}\n6&8\\\\\n10&12\n\\end{pmatrix}\n\\end{align*}\n\\]\nmx_A = array([[1,2],[3,4]])\nmx_B = array([[5,6],[7,8]])\nmx_Y = mx_A+mx_B\n\nMatrix multiplication\n\n\\[\n\\mathbf{AB} =\n\\begin{pmatrix}\n19&22\\\\\n47&50\n\\end{pmatrix}\n\\]\nmx_F = mx_A.dot(mx_B)\n\nMatrix transpose\n\n\\[\n\\mathbf{A}^T =\n\\begin{pmatrix}\n1&3\\\\\n2&4\n\\end{pmatrix}\n\\]\nmx_A_t = mx_A.T\n\nIdentity matrix\n\n\\[\n\\mathbf{I} =\n\\begin{pmatrix}\n1&0&0\\\\\n0&1&0\\\\\n0&0&1\n\\end{pmatrix}\n\\]\nmx_I = eye(3,3)\n\nInverse matrix\n\n\\[\n\\begin{align*}\n\\mathbf{C} &=\n\\begin{pmatrix}\n1&2\\\\\n3&4\n\\end{pmatrix}\\\\\n\\mathbf{C}^{-1} &=\n\\begin{pmatrix}\n-2&1\\\\\n\\frac{3}{2}&\\frac{-1}{2}\n\\end{pmatrix}\\\\\n\\end{align*}\n\\]\nmx_C = array([[1,2],[3,4]])\nmx_C_inv = la.inv(mx_C)\n\nEigenvalues+eigenvectors (\\(\\lambda_i\\), \\(\\mathbf{x_i}\\))\n\n\\[\n\\mathbf{Cx} = \\lambda\\mathbf{x}\n\\]\nC_evals, C_evecs = la.eig(mx_C)\n\nMatrix reshape\n\n\\[\n\\begin{align*}\n\\mathbf{g} &=\n\\begin{pmatrix}\n1&2&3&4&5&6&7&8&9\n\\end{pmatrix}\\\\\n\\mathbf{G} &=\n\\begin{pmatrix}\n1&2&3\\\\\n4&5&6\\\\\n7&8&9\n\\end{pmatrix}\n\\end{align*}\n\\]\nvec_g = array([1,2,3,4,5,6,7,8,9])\nmx_G = vec_g.reshape(3,3)\n\nElement-wise matrix multiplication\n\n\\[\n\\mathbf{A}\\odot\\mathbf{B} =\n\\begin{pmatrix}\n5&12\\\\\n21&32\n\\end{pmatrix}\n\\]\nmx_H = mx_A*mx_B\n\nMatrix determinant\n\n\\[\n\\begin{align*}\n\\det(\\mathbf{C}) &=\n\\begin{vmatrix}\n\\mathbf{C}\n\\end{vmatrix}\\\\\n\\begin{vmatrix}\n1&2\\\\\n3&4\n\\end{vmatrix}\n&= -2\n\\end{align*}\n\\]\ndet_mx_C = la.det(mx_C)"
   }
 ]
