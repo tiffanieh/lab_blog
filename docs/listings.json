@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/conduct_gwas_post/index.html",
       "/posts/pytorch_tensor_post/index.html",
       "/posts/mx_alg_basics_pt1_post/index.html",
       "/posts/llm_summary_post/index.html"
