@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/wine_nn/index.html",
       "/posts/transcriptome_qgt_lab/index.html",
       "/posts/population_structure/index.html",
       "/posts/conduct_gwas_post/index.html",
