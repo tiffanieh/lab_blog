@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.296">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="tiffanie">
+<meta name="dcterms.date" content="2023-06-16">
+
+<title>tiffanie lab blog - Neural networks (3b1b)</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">tiffanie lab blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/tiffanieh" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Neural networks (3b1b)</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">demos</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>tiffanie </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">June 16, 2023</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<p><a href="https://www.youtube.com/watch?v=aircAruvnKk&amp;ab_channel=3Blue1Brown">original tutorial link</a></p>
+<p><strong>Neuron:</strong> thing that holds a number between 0 and 1** (see revised definition at the end)</p>
+<ul>
+<li>ex. MNIST dataset — each neuron is one of the 28x28 pixels, holding a number between 0 and 1 representing grayscale value — <strong>activation</strong>
+<ul>
+<li>when activation is a high number, neuron is “lit up”</li>
+</ul></li>
+<li>output layer: each neuron has activation between 0 and 1 representing how likely it is to be each digit (between 0-9)</li>
+<li>hidden layers in between: ? — don’t know what’s going on there yet</li>
+</ul>
+<p>Activations in one layer determine activations in the next layer, loosely analogous to how some group of neurons (biological) firing causes some other group of neurons to fire.</p>
+<ul>
+<li>Ex. if you feed in an image lighting up all 784 neurons of the input layer according to the brightness of each pixel of the image, that pattern of acitvations causes some very specific pattern in next layer → next layer → some pattern in output layer → brightest neuron of output layer is prediction for the digit</li>
+</ul>
+<p>Why use layers?</p>
+<ul>
+<li>not all connections are equal — some might be stronger than others</li>
+<li>goal/hope:
+<ul>
+<li><p>humans piece together various components like loops+lines when recognizing digits</p></li>
+<li><p>ex. w/ NN, feed in an image w/ a loop up top → there is some specific neuron whose activation will be close to 1.0</p>
+<img src="https://3b1b-posts.us-east-1.linodeobjects.com//content/lessons/2017/neural-networks/upper-loop-neuron.png" class="quarto-discovered-preview-image img-fluid" alt="https://3b1b-posts.us-east-1.linodeobjects.com//content/lessons/2017/neural-networks/upper-loop-neuron.png"></li>
+<li><p>how to recognize subcomponents? recognize various edges that make it up:</p>
+<img src="https://3b1b-posts.us-east-1.linodeobjects.com//content/lessons/2017/neural-networks/loop-edges.png" class="img-fluid" alt="https://3b1b-posts.us-east-1.linodeobjects.com//content/lessons/2017/neural-networks/loop-edges.png"></li>
+<li><p>hope is that each neuron in second layer of network corresponds to some little edge; when image comes in, lights up neurons associated w/ all specific little edges inside that image → light up neurons in third layer associated w/ larger scale patterns like loops+long lines → cause some neuron from final layer to fire which corresponds to the appropriate digit</p></li>
+</ul></li>
+</ul>
+<p>Layers break problems into small pieces</p>
+<ul>
+<li>how would acitvations in one layer determine activations in the next?</li>
+<li>goal: have some mehcanism that coudl combine pixels into edges → edges into patterns → patterns into digits</li>
+<li>ex. want neuron in second layer to pick up on whether or not the image has an edge in a particular region</li>
+<li>→ <strong>Q: what parameters should exist?</strong>
+<ul>
+<li><p>assign weight to each one of connections between our neuron+neurons from first layer</p>
+<ul>
+<li>ex. w1, w2, w3…</li>
+</ul></li>
+<li><p>weights are just numbers → take all activations from first layer+compute weighted sum according to these weights</p>
+<ul>
+<li>w1a1+w2a2+w3a3+….wnan</li>
+</ul></li>
+<li><p>think of weights as organized into a grid of their own (blue=positive, red=negative weights); brightness of pixel=loose depiction of weight value</p>
+<img src="https://3b1b-posts.us-east-1.linodeobjects.com//content/lessons/2017/neural-networks/weights-square-blue.png" class="img-fluid" alt="https://3b1b-posts.us-east-1.linodeobjects.com//content/lessons/2017/neural-networks/weights-square-blue.png"></li>
+<li><p>make weights associated w/ almost all of the pixels 0 except for some positive weights associated w/ these pixels in region where we want to detect an edge</p>
+<ul>
+<li>→ take weighted sum = adding up values of pixels in our region of interest</li>
+</ul></li>
+<li><p>this pattern of weights will also pick up on big blobs of activated pixels (not just edges); make sure to pick up on whether or not this is an edge by <strong>having some negative weights associated w/ surrounding pixels</strong></p>
+<img src="https://3b1b-posts.us-east-1.linodeobjects.com//content/lessons/2017/neural-networks/weights-attempt-2.png" class="img-fluid" alt="https://3b1b-posts.us-east-1.linodeobjects.com//content/lessons/2017/neural-networks/weights-attempt-2.png">
+<ul>
+<li>→ sum will be largest when these pixels are bright and <strong>surrounding pixels are dark</strong></li>
+</ul></li>
+</ul></li>
+</ul>
+<p>Sigmoid squishification</p>
+<ul>
+<li><p>result of weighted sum like this can be any number; this example (categorical) we want activations to be values between 0 and 1</p></li>
+<li><p>solution: pump weighted sum into some fn that squishes real number line into range between 0 and 1</p></li>
+<li><p>common fn example: <strong>sigmoid fn (aka logistic curve)</strong></p>
+<p><span class="math display">\[
+  \sigma(x)=\frac{1}{1+e^{-x}}
+  \]</span></p>
+<ul>
+<li>very neg inputs end up close to 0; very pos inputs close to 1</li>
+<li>steadily increases around 0</li>
+</ul></li>
+<li><p>back to examaple: activation of the neuron here is measure of how positive the relevant weighted sum is</p></li>
+<li><p><strong>maybe don’t want neuron to light up when sum is greater than 0; what if you only want it to be active when the sum is &gt; 10?</strong></p>
+<ul>
+<li>→ you want some <strong>bias</strong> for it to be active</li>
+<li>solution: add in <strong>bias</strong> — some other number (such as -10) to the weighted sum before plugging it through the sigmoid fn
+<ul>
+<li>bias tells you how high the weighted sum needs to be before the neuron starts getting meaningfully active</li>
+</ul></li>
+</ul>
+<p><span class="math display">\[
+  \sigma(w_1a_1+w_2a_2+w_3a_3+\cdots+w_na_n\color{green}-10\color{black})
+  \]</span></p></li>
+<li><p>between just 2 layers, each neuron will have its own weights and its own bias</p>
+<ul>
+<li>in this example:
+<ul>
+<li><span class="math inline">\(784\times 16+16\times 16+16\times 10\;\text{weights}\)</span></li>
+<li><span class="math inline">\(16+16+10\; \text{biases}\)</span></li>
+</ul></li>
+<li>total: 13,002 weights and biases</li>
+</ul></li>
+</ul>
+<p>Notation review</p>
+<ul>
+<li><p>example: actual function for first neuron of second layer:</p>
+<p><span class="math display">\[
+  a_0^{(1)}=\sigma(w_{0,0}a_0^{(0)}+w_{0,1}a_1^{(0)}+\cdots+w_{0,n}a_n^{(0)}+b_0)
+  \]</span></p></li>
+</ul>
+<ol type="1">
+<li>organize all <strong>activations</strong> from one layer into a <strong>column</strong> as a <strong>vector</strong></li>
+</ol>
+<p><span class="math display">\[
+\begin{pmatrix}
+a_0^{(0)}\\
+a_1^{(0)}\\
+\vdots\\
+a_n^{(0)}
+\end{pmatrix}
+\]</span></p>
+<ol start="2" type="1">
+<li>organize all <strong>weights as a matrix</strong> — each row vector: weights for connections between one layer and a single neuron in next layer</li>
+</ol>
+<ul>
+<li>ex. the first row in matrix below represents connections between first layer and first neuron of second layer</li>
+</ul>
+<p><span class="math display">\[
+\color{purple}
+\begin{pmatrix}
+w_{0,0}&amp;w_{0,1}&amp;\dots&amp;w_{0,n}\\
+w_{1,0}&amp;w_{1,1}&amp;\dots&amp;w_{1,n}\\
+\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\
+w_{k,0}&amp;w_{k,1}&amp;\dots&amp;w_{k,n}
+\end{pmatrix}
+\]</span></p>
+<ol start="3" type="1">
+<li>each component of matrix-vector product is weighted sum of one of the sets of weights</li>
+</ol>
+<ul>
+<li>ex. taking weighted sum of activations in first layer according to weights for the first neuron of second layer corresponds to one of the terms in matrix vector product (the first one), and so on</li>
+</ul>
+<p><span class="math display">\[
+\color{purple}\begin{pmatrix}
+w_{0,0}&amp;w_{0,1}&amp;\dots&amp;w_{0,n}\\
+w_{1,0}&amp;w_{1,1}&amp;\dots&amp;w_{1,n}\\
+\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\
+w_{k,0}&amp;w_{k,1}&amp;\dots&amp;w_{k,n}
+\end{pmatrix}
+\color{black}
+\begin{pmatrix}
+a_0^{(0)}\\
+a_1^{(0)}\\
+\vdots\\
+a_n^{(0)}
+\end{pmatrix}
+=
+\begin{pmatrix}
+?\\
+?\\
+\vdots\\
+?
+\end{pmatrix}
+\]</span></p>
+<ol start="4" type="1">
+<li>instead of adding bias to each value independently, organize biases into vector and add that whole vector to previous matrix-vector product</li>
+</ol>
+<p><span class="math display">\[
+\color{purple}\begin{pmatrix}
+w_{0,0}&amp;w_{0,1}&amp;\dots&amp;w_{0,n}\\
+w_{1,0}&amp;w_{1,1}&amp;\dots&amp;w_{1,n}\\
+\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\
+w_{k,0}&amp;w_{k,1}&amp;\dots&amp;w_{k,n}
+\end{pmatrix}\color{black}
+\begin{pmatrix}
+a_0^{(0)}\\
+a_1^{(0)}\\
+\vdots\\
+a_n^{(0)}
+\end{pmatrix}
++
+\color{green}
+\begin{pmatrix}
+b_0\\
+b_1\\
+\vdots\\
+b_n
+\end{pmatrix}
+\]</span></p>
+<ol start="5" type="1">
+<li>apply sigmoid fn to each specific component of the resulting vector inside</li>
+</ol>
+<p><span class="math display">\[
+\color{teal}\sigma\left[\color{purple}\begin{pmatrix}
+w_{0,0}&amp;w_{0,1}&amp;\dots&amp;w_{0,n}\\
+w_{1,0}&amp;w_{1,1}&amp;\dots&amp;w_{1,n}\\
+\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\
+w_{k,0}&amp;w_{k,1}&amp;\dots&amp;w_{k,n}
+\end{pmatrix}\color{black}
+\begin{pmatrix}
+a_0^{(0)}\\
+a_1^{(0)}\\
+\vdots\\
+a_n^{(0)}
+\end{pmatrix}
++
+\color{green}
+\begin{pmatrix}
+b_0\\
+b_1\\
+\vdots\\
+b_n
+\end{pmatrix}\color{teal}\right]
+\]</span></p>
+<p><span class="math display">\[
+\color{teal}\sigma(\mathbf{\color{purple}W\color{black}a^{(0)}}\color{black}+\color{green}\mathbf{b}\color{teal})
+\]</span></p>
+<p>communicates full transition of activations from one layer to the next</p>
+<p>Upshot</p>
+<p><strong>new definition of neuron:</strong> a function — one takes in outputs of all the neurons in the previous layer and spits out a number between 0 and 1 (in this example)</p>
+<p>The entire net is a (very complicated) fn — takes in 784 numbers as input and spits out 10 numbers as output.</p>
+<p><span class="math display">\[
+f(a_0,\dots,a_{783})=\begin{pmatrix}
+y_0\\
+\vdots\\
+y_9
+\end{pmatrix}
+\]</span></p>
+<p>network → fn</p>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
