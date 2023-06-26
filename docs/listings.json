@@ -2,13 +2,21 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/pp_train_test_data/index.html",
+      "/posts/enformer_summary/index.html",
+      "/posts/w3_thesis_updates/index.html",
       "/posts/wine_nn/index.html",
+      "/posts/pytorch_nn/index.html",
+      "/posts/pytorch_train_classifier/index.html",
+      "/posts/pytorch_autograd/index.html",
       "/posts/transcriptome_qgt_lab/index.html",
+      "/posts/functional_annotation_gwas/index.html",
       "/posts/population_structure/index.html",
-      "/posts/conduct_gwas_post/index.html",
-      "/posts/pytorch_tensor_post/index.html",
-      "/posts/mx_alg_basics_pt1_post/index.html",
-      "/posts/llm_summary_post/index.html"
+      "/posts/conduct_gwas/index.html",
+      "/posts/mx_alg_basics_pt1/index.html",
+      "/posts/pytorch_tensor/index.html",
+      "/posts/llm_summary/index.html",
+      "/posts/w1_thesis_updates/index.html"
     ]
   }
 ]

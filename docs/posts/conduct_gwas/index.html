@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.296">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="tiffanie">
+<meta name="dcterms.date" content="2023-06-12">
+
+<title>tiffanie lab blog - Conducting GWAS studies summary</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">tiffanie lab blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/tiffanieh" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Conducting GWAS studies summary</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">readings</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>tiffanie </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">June 12, 2023</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<p><a href="https://pubmed.ncbi.nlm.nih.gov/29484742/">paper link</a></p>
+<p><a href="https://github.com/MareesAT/GWA_tutorial">demo github link</a></p>
+<details>
+<summary>
+Glossary
+</summary>
+<ul>
+<li><p><strong>Clumping</strong>: This is a procedure in which only the most significant SNP (i.e., lowest&nbsp;<em>p</em>&nbsp;value) in each LD block is identified and selected for further analyses. This reduces the correlation between the remaining SNPs, while retaining SNPs with the strongest statistical evidence.</p></li>
+<li><p><strong>Co‐heritability</strong>: This is a measure of the genetic relationship between disorders. The SNP‐based co‐heritability is the proportion of covariance between disorder pairs (e.g., schizophrenia and bipolar disorder) that is explained by SNPs.</p></li>
+<li><p><strong>Gene</strong>: This is a sequence of nucleotides in the DNA that codes for a molecule (e.g., a protein)</p></li>
+<li><p><strong>Heterozygosity</strong>: This is the carrying of two different alleles of a specific SNP. The heterozygosity rate of an individual is the proportion of heterozygous genotypes. High levels of heterozygosity within an individual might be an indication of low sample quality whereas low levels of heterozygosity may be due to inbreeding.</p></li>
+<li><p><strong>Individual‐level missingness</strong>: This is the number of SNPs that is missing for a specific individual. High levels of missingness can be an indication of poor DNA quality or technical problems.</p></li>
+<li><p><strong>Linkage disequilibrium (LD)</strong>: This is a measure of non‐random association between alleles at different loci at the same chromosome in a given population. SNPs are in LD when the frequency of association of their alleles is higher than expected under random assortment. LD concerns patterns of correlations between SNPs.</p></li>
+<li><p><strong>Minor allele frequency (MAF)</strong>: This is the frequency of the least often occurring allele at a specific location. Most studies are underpowered to detect associations with SNPs with a low MAF and therefore exclude these SNPs.</p></li>
+<li><p><strong>Population stratification</strong>: This is the presence of multiple subpopulations (e.g., individuals with different ethnic background) in a study. Because allele frequencies can differ between subpopulations, population stratification can lead to false positive associations and/or mask true associations. An excellent example of this is the chopstick gene, where a SNP, due to population stratification, accounted for nearly half of the variance in the capacity to eat with chopsticks (Hamer &amp; Sirota,&nbsp;<a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6001694/#mpr1608-bib-0022">2000</a>).</p></li>
+<li><p><strong>Pruning</strong>: This is a method to select a subset of markers that are in approximate linkage equilibrium. In PLINK, this method uses the strength of LD between SNPs within a specific window (region) of the chromosome and selects only SNPs that are approximately uncorrelated, based on a user‐specified threshold of LD. In contrast to clumping, pruning does not take the&nbsp;<em>p</em>&nbsp;value of a SNP into account.</p></li>
+<li><p><strong>Relatedness</strong>: This indicates how strongly a pair of individuals is genetically related. A conventional GWAS assumes that all subjects are unrelated (i.e., no pair of individuals is more closely related than second‐degree relatives). Without appropriate correction, the inclusion of relatives could lead to biased estimations of standard errors of SNP effect sizes. Note that specific tools for analysing family data have been developed.</p></li>
+<li><p><strong>Sex discrepancy:</strong>&nbsp;This is the difference between the assigned sex and the sex determined based on the genotype. A discrepancy likely points to sample mix‐ups in the lab. Note, this test can only be conducted when SNPs on the sex chromosomes (X and Y) have been assessed.</p></li>
+<li><p><strong>Single nucleotide polymorphism (SNP)</strong>: This is a variation in a single nucleotide (i.e., A, C, G, or T) that occurs at a specific position in the genome. A SNP usually exists as two different forms (e.g., A vs.&nbsp;T). These different forms are called alleles. A SNP with two alleles has three different genotypes (e.g., AA, AT, and TT).</p></li>
+<li><p><strong>SNP‐heritability:</strong>&nbsp;This is the fraction of phenotypic variance of a trait explained by all SNPs in the analysis.</p></li>
+<li><p><strong>SNP‐level missingness</strong>: This is the number of individuals in the sample for whom information on a specific SNP is missing. SNPs with a high level of missingness can potentially lead to bias.</p></li>
+<li><p><strong>Summary statistics</strong>: These are the results obtained after conducting a GWAS, including information on chromosome number, position of the SNP, SNP(rs)‐identifier, MAF, effect size (odds ratio/beta), standard error, and p-value. Summary statistics of GWAS are often freely accessible or shared between researchers.</p></li>
+<li><p><strong>The Hardy–Weinberg (dis)equilibrium (HWE) law</strong>: This concerns the relation between the allele and genotype frequencies. It assumes an indefinitely large population, with no selection, mutation, or migration. The law states that the genotype and the allele frequencies are constant over generations. Violation of the HWE law indicates that genotype frequencies are significantly different from expectations (e.g., if the frequency of allele A&nbsp;=&nbsp;0.20 and the frequency of allele T&nbsp;=&nbsp;0.80; the expected frequency of genotype AT is 2 * 0.2 * 0.8&nbsp;=&nbsp;0.32) and the observed frequency should not be significantly different. In GWAS, it is generally assumed that deviations from HWE are the result of genotyping errors. The HWE thresholds in cases are often less stringent than those in controls, as the violation of the HWE law in cases can be indicative of true genetic association with disease risk.</p>
+</li></ul></details>
+
+<p><strong>Intro</strong></p>
+<p>Aim of genome-wide association studies (GWAS): to identify <strong>single nucleotide polymorphisms</strong> (SNPs — variation in single nucleotide at specific position in genome; exists as 2 forms aka alleles) of which allele frequencies vary systematically as a fn of phenotypic trait values, since identifying trait-associated SNPs may reveal new insights into biological mechanisms behind phenotypes. SNP w/ 2 alleles → 3 different genotypes.</p>
+<p>Historically studies suggest that psychiatric traits are influenced by SNPs — each having small individual effect sizes. GWAS relies strongly on in-depth knowledge of genetic architecture of the human genome, provided by the International HapMap Project (patterns of common SNPs within human DNA seq)+1000 Genomes project (map of both common and rare SNPs).</p>
+<p>GWAS results showed effect sizes of individual SNPs are small → want to find way to aggregate effect of SNPs → focus on PRS (<strong>polygenic risk score</strong>) analysis, since it can be applied to target samples w/ more modest sample sizes.</p>
+<p>PRS — combines effect sizes of multiple SNPs into an aggregated score (individual level, based on # risk variants carried, weighted by SNP effect sizes from an independent large-scaled discovery GWAS) used to predict disease risk.</p>
+<ul>
+<li>i.e.&nbsp;indication of <strong>total genetic risk for an individual for a specific trait (disease status);</strong> can be used in clinical pred/screening</li>
+<li>significantly associaed w/ case-control status for psychiatric traits; however discriminative accuracy still insufficient</li>
+<li>also used to investigate if genetic effect sizes from a GWAS of a specific phenotype of interest can predict risk of another phenotype</li>
+<li>paper outline: quality control (QC) procedures before GWAS, commonly used tests of association, conduct analysis</li>
+</ul>
+<p><strong>Software</strong></p>
+<p>PLINK v1.08 will be used for QC procedures+stat analyses and R for visualization.</p>
+<p>PLINK: reads text-format or binary files, but binary is faster and recommended</p>
+<ul>
+<li><strong>text PLINK data:</strong> 2 files of different contents
+<ol type="1">
+<li>info on individuals+genotype (*.ped)</li>
+<li>info on genetic markers (*.map)</li>
+</ol></li>
+<li><strong>binary PLINK data:</strong> 3 files
+<ol type="1">
+<li>binary file w/ IDs+genotypes for individuals (*.bed)
+<ul>
+<li>e.g.&nbsp;individual IDs and genotypes</li>
+</ul></li>
+<li>text file w/ info on individuals (*.fam)
+<ul>
+<li>e.g.&nbsp;subject-related data like family relationship w/ other participants, sex, clinical diagnosis</li>
+</ul></li>
+<li>text file w/ info on genetic markers (*.bim)
+<ul>
+<li>e.g.&nbsp;info on phys position of SNPs</li>
+</ul></li>
+</ol></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6001694/bin/MPR-27-e1608-g001.jpg" class="quarto-discovered-preview-image img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6001694/bin/MPR-27-e1608-g001.jpg</figcaption><p></p>
+</figure>
+</div>
+<p>PLINK — command line program → requires active shell waiting for commands</p>
+<ul>
+<li>after prompt: indicate use of PLINK w/ <code>plink</code> (will need path to directory if not in current directory)</li>
+<li>after <code>plink</code> other options, beginning w/ 2 dashes <code>--</code> :
+<ol type="1">
+<li>provide format+name of data files
+<ol type="1">
+<li>text file: <code>--file {your_file}</code></li>
+<li>binary: <code>--bfile {yourfile}</code></li>
+</ol></li>
+<li>after: other options can be added; e.g.&nbsp;<code>--assoc</code> option for association analysis w/ <span class="math inline">\(\chi^2\)</span> test for each SNP to phenotype of interest</li>
+</ol></li>
+<li>multiple options can be combined in a single command line, but default order is implemented</li>
+<li><code>--out {outfile}</code> provides name to output file</li>
+</ul>
+<p><strong>QC of genetic data</strong></p>
+<p>Appropriate QC needed to generate reliable results since sources of errors include poor quality of DNA samples, poor DNA hybridization to array, poorly performing genotype probes, and sample mix-ups/contamination.</p>
+<p>Data simulation w/ HapMap data:</p>
+<ul>
+<li>illustration of analysis steps w/ realistic genetic data using simulated dataset (<span class="math inline">\(N=207\)</span>) w/ binary outcome measure</li>
+<li>relatively small sample size+ethnically homogeneous dataset (*larger sample sizes will be needed to detect genetic risk factors of complex traits)</li>
+<li>data from demo 1 in this md file (<a href="https://github.com/MareesAT/GWA_tutorial/">link</a>)</li>
+</ul>
+<p>7 QC steps (key terms from beginning bolded) — hands-on lab in demos 1+2</p>
+<ol type="1">
+<li><strong>individual+SNP missingness</strong></li>
+<li>inconsistencies in assigned+genetic sex of subjects (see <strong>sex discrepancy</strong>)</li>
+<li><strong>minor allele freq (MAF)</strong></li>
+<li>deviations from <strong>HWE</strong> (Hardy-Weinberg equilibrium)</li>
+<li><strong>heterozygosity</strong> rate</li>
+<li><strong>relatedness</strong></li>
+<li>ethnic outliers (see <strong>population stratification</strong>)</li>
+</ol>
+<p>Step - command - fn - threshold table</p>
+<table class="table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Step</th>
+<th>Command</th>
+<th>Fn</th>
+<th>Threshold</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>missingness of SNPs+individuals</td>
+<td><code>--geno</code>, <code>--mind</code></td>
+<td>excludes SNPs missing in large proportion of subjects, remove SNPs w/ low genotype calls*; excludes individuals w/ high rates of genotype missingness, remove individual with low genotype calls</td>
+<td>recommended: first filter SNPs+individuals based on relaxed threshold (0.2; &gt;20%) to filter out ones w/ very high levels of missingness; then apply filter w/ more stringent threshold (0.02);</td>
+</tr>
+<tr class="even">
+<td>SNP filtering before individual filtering</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>sex discrepancy</td>
+<td><code>--check-sex</code></td>
+<td>checks for sex discrepancies between individuals recorded in dataset+sex based on X chromosome heterozygosity/homozygosity rates</td>
+<td>can indicate sample mix-ups; want to see males X chromosome homozygosity estimate of &gt;0.8 and females of &lt;0.2</td>
+</tr>
+<tr class="even">
+<td>MAF (minor allele freq)</td>
+<td><code>--maf</code></td>
+<td>include only SNPs above set MAF threshold</td>
+<td>SNPs w/ low MAF are rare → power lacking for detecting SNP-phenotype associations; SNPs also more prone to genotyping errors; MAF threshold depends on sample size — larger samples can use lower MAF thresholds; for large (<span class="math inline">\(N = 100.000\)</span>) vs.&nbsp;moderate samples (<span class="math inline">\(N&nbsp;=&nbsp;10000\)</span>), 0.01 and 0.05 are commonly used as MAF threshold</td>
+</tr>
+<tr class="odd">
+<td>HWE</td>
+<td><code>--hwe</code></td>
+<td>exclude markers deviating from HWE</td>
+<td>common indicator of genotyping error; may also indicate evolutionary selection. <strong>binary traits</strong> — suggest excluding HWE where <span class="math inline">\(p&lt;1\times10^{-10}\)</span> in cases, <span class="math inline">\(p&lt;1\times10^{-6}\)</span> in controls; less strict case threshold avoids discarding disease-associated SNPs under selection; <strong>quantitative traits</strong> — recommend HWE <span class="math inline">\(p &lt; 1\times10^{-6}\)</span></td>
+</tr>
+<tr class="even">
+<td>heterozygosity</td>
+<td>script from demo link</td>
+<td>exclude individuals w/ high or low heterozygosity rates</td>
+<td>deviations can indicate sample contamination, inbreeding; suggest removing individuals deviating <span class="math inline">\(\pm 3s_x\)</span> from the samples’ heterozygosity rate mean.</td>
+</tr>
+<tr class="odd">
+<td>relatedness</td>
+<td><code>--genome</code>, <code>--min</code></td>
+<td>calculate identity by descent (IBD)** of all sample pairs, creates list of individuals w/ relatedness above set threshold**</td>
+<td>use independent SNPs (<strong>pruning</strong>) for this analysis+limit to autosomal chromosomes only; cryptic relatedness can interfere with the association analysis — if you have a family-based sample (e.g., parent-offspring), don’t need to remove related pairs but should take family relatedness into account. for a population based sample suggested threshold is <span class="math inline">\(\hat{\pi}=0.2\)</span></td>
+</tr>
+<tr class="even">
+<td>population stratification</td>
+<td><code>--genome</code>, <code>--cluster --mds-plot k</code></td>
+<td>calculates IBD** of all sample pairs; produces <span class="math inline">\(k\)</span>-dimensional representation of any substructure in data based on IBS</td>
+<td><span class="math inline">\(K\)</span>= # dimensions (to be defined; usually 10)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>*genotype calls: estimation of one unique SNP or genotype</li>
+<li>**identity by descent: matching segment of DNA shared by two or more people that has been inherited from a common ancestor without any intervening recombination</li>
+</ul>
+<p><strong>Controlling for population stratification</strong></p>
+<p><strong>population stratification:</strong> presence of multiple subpopulations (e.g., individuals with different ethnic background) in a study</p>
+<ul>
+<li>can lead to false (+) associations and/or mask true associations</li>
+<li>e.g.&nbsp;chopstick gene (where a SNP due to population stratification accounted for nearly half of the variance in capacity to eat w. chopsticks)</li>
+<li>may exist even within a single ethnic population</li>
+</ul>
+<p>One method to correct: multidimensional scaling (MDS) approach — calculate genome-wide average proportion of alleles shared between any pair of individuals within sample to generate quantitative indices (<strong>components</strong>) of genetic variation for each individual. Individual component scores can be plotted to explore whether there are groups of individuals that are genetically more similar to each other than expected.</p>
+<ul>
+<li>plot scores of sample under investigation+population of known ethnic structure (such as HapMap/1KG data) — <strong>anchoring</strong></li>
+<li>enables researcher to obtain ethnic info on their sample+determine possible ethnic outliers</li>
+<li>outliers can be removed; conduct new MDS analysis
+<ul>
+<li>main components used as covariates in association tests in order to correct for any remaining population stratification in population</li>
+</ul></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6001694/bin/MPR-27-e1608-g003.jpg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6001694/bin/MPR-27-e1608-g003.jpg</figcaption><p></p>
+</figure>
+</div>
+<p><strong>Statistical tests of association</strong></p>
+<p>After QC+calculation of MDS components, select appropriate statistical test:</p>
+<ul>
+<li>1 df <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4054703/">allelic test</a> (trait value or log-odds of a binary trait increases linearly as a function of number of risk alleles — minor allele a vs major allele A)
+<ul>
+<li>each allele becomes the statistical unit instead of an individual (main problem with this approach is that we would be ignoring the induced correlation in the data by the fact that we are, in some sense, “double counting” the observations)</li>
+</ul></li>
+<li>non-additive tests*
+<ul>
+<li>genotypic association test (2 df — aa vs Aa vs AA)</li>
+<li>dominant gene action test (1 df — [aa &amp; Aa] vs AA)</li>
+<li>recessive gene action test (1 df — aa vs [Aa &amp; AA])</li>
+<li>*not widely applied b/c power to detect non-additivity is low</li>
+</ul></li>
+</ul>
+<p>Binary outcome measure</p>
+<ul>
+<li>association between SNPs and a binary outcome (1=unaffected; 2=affected; 0/-9=missing) tested with <code>--assoc</code> (<span class="math inline">\(\chi^2\)</span> test of association — cannot include covariates) or <code>--logistic</code> (logistic regression analysis — allows covariates but more computational time)</li>
+</ul>
+<p>Quantitative outcome measure</p>
+<ul>
+<li>association between SNPs and quantitative outcome measures can be tested w/ <code>assoc</code> (automatically treats as numerical by performing asymptotic version of student’s <span class="math inline">\(t\)</span> test to compare 2 means) and <code>--linear</code> (linear regression analysis w/ each individual SNP as a predictor; enables use of covariates but slower)</li>
+</ul>
+<p>Correction for multiple testing</p>
+<ul>
+<li>multiple testing burden since genotyping arrays can genotype up to 4 million markers concurrently, generating large # of tests</li>
+<li>3 widely applied alternatives for determining genome-wide significance:
+<ol type="1">
+<li>Bonferroni: good for controlling Type I error rate; adjusted p w/ formula <span class="math inline">\(\frac{\alpha}{n}\)</span> (where <span class="math inline">\(\alpha\)</span> is original p-value; here it is 0.05 and <span class="math inline">\(n\)</span> is # SNPs tested)
+<ol type="1">
+<li>many SNPs correlated due to <strong>linkage disequilibrium (LD)</strong> and thus not independent — too harsh of a correction and could lead to increase in proportion of false negative findings</li>
+</ol></li>
+<li>Benjamini-Hochberg: controls expected proportion of FP among all signals with FDR value below fixed threshold
+<ol type="1">
+<li>FDR method assumes SNPs are independent</li>
+<li>limitation: SNPs and thus p values are not independent</li>
+</ol></li>
+</ol>
+<ul>
+<li><code>--adjust</code> outputs unadjusted p value along w/ p values corrected w/ various multiple testing correction methods</li>
+</ul>
+<ol type="1">
+<li>permutation methods: outcome measure labels randomly permuted mutiple times to remove any true association between outcome measure and genotype
+<ol type="1">
+<li>statistical tests performed for all permuted datasets; compare empirical distribution of test statistic and p values under null to original test statistic</li>
+<li><code>--assoc</code> and <code>--mperm</code> combined to generate 2 p-values: <strong>EMP1</strong> (empirical p value — uncorrected) and <strong>EMP2</strong> (empirical p value corrected for multiple testing)</li>
+</ol></li>
+</ol></li>
+</ul>
+<p><strong>PRS analysis</strong></p>
+<p>Computing a PRS</p>
+<ul>
+<li>single variant association analysis is the primary methdo in GWAS but needs large sample size to detect SNPs for many complex traits</li>
+<li>PRS aggregates genetic risk across genome in single individual polygenic score for a trait of interest</li>
+<li>large discovery sample required to reliably dtermine how much each SNP is expected to contribute to polygenic score (”weights”) of a specific trait</li>
+<li>in an independent target sample (doesn’t need to be as big) polygenic scores calculated based on genetic DNA profiles+these weights — around 200 subjects provides sufficient power to detect significan proportion of variance explained</li>
+<li>discovery+target samples should have same # subjects until the target sample includes 2,000 subjects</li>
+<li>more available samples → additional subjects should be included in discovery sample to maximize accuracy of estimation of effect sizes</li>
+<li>has been successfully used to show significant associations both within+across traits
+<ul>
+<li>e.g.&nbsp;a significant association with disease risk was found despite fact that the available sample sizes were too small to detect genome-wide significant SNPs</li>
+</ul></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6001694/bin/MPR-27-e1608-g004.jpg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6001694/bin/MPR-27-e1608-g004.jpg</figcaption><p></p>
+</figure>
+</div>
+<ul>
+<li>to conduct PRS analysis, trait specific weights (<span class="math inline">\(\beta\)</span>s for continuous traits+log of odds ratio for binary traits) are obtained from a discovery GWAS
+<ul>
+<li>in target sample, PRS is calculated for each individual based on weighted sum of # risk alleles that he or she carries multiplied by trait-specific weights (SNP effect sizes publicly available for many complex traits)</li>
+</ul></li>
+<li>all common SNPs could be used in a PRS analysis, but <em>it is customary to clump first (only the most significant SNP (i.e., lowest&nbsp;</em>p*&nbsp;value) in each LD block is identified and selected for further analyses) the GWAS results, then compute risk scores</li>
+<li>p value thresholds typically used to remove SNPs that show little or no statistical evidence for association</li>
+<li>multiple PRS analyses will be performed with varying thresholds for p values</li>
+</ul>
+<p>Conducting polygenic risk prediction analyses</p>
+<ul>
+<li>once PRS has been calculated for all subjects in target sample, use scores in logistic reg analysis → predict trait expected to show genetic overlap w/ trait of interest
+<ul>
+<li>prediction accuracy expressed w/ <span class="math inline">\(R^2\)</span> measure of regression analysis (include at least a few MDS components as covariates in regression analysis to control for population stratification)</li>
+</ul></li>
+<li>to estimate how much variation is explained by PRS, <span class="math inline">\(R^2\)</span> of a model that includes covariates+PRS will be compared
+<ul>
+<li>increase in <span class="math inline">\(R^2\)</span> due to PRS indicates increase in prediction accuracy explained by genetic risk factors</li>
+</ul></li>
+<li>prediction accuracy of PRS depends mostly on <strong>(co-)heritability</strong> of analyzed traits, the number of SNPs, and the size of discovery sample
+<ul>
+<li>size of target sample only affects reliability of <span class="math inline">\(R^2\)</span></li>
+</ul></li>
+</ul>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
