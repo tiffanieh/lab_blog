@@ -2,74 +2,82 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://tiffanie.quarto.pub/tiffanie_lab_blog/posts/mx_alg_basics_pt1/index.html</loc>
-    <lastmod>2023-06-26T03:39:21.398Z</lastmod>
+    <lastmod>2023-06-26T04:25:42.573Z</lastmod>
   </url>
   <url>
     <loc>https://tiffanie.quarto.pub/tiffanie_lab_blog/posts/transcriptome_qgt_lab/index.html</loc>
-    <lastmod>2023-06-26T03:39:22.624Z</lastmod>
+    <lastmod>2023-06-26T04:25:43.845Z</lastmod>
   </url>
   <url>
     <loc>https://tiffanie.quarto.pub/tiffanie_lab_blog/posts/llm_summary/index.html</loc>
-    <lastmod>2023-06-26T03:39:23.702Z</lastmod>
+    <lastmod>2023-06-26T04:25:44.852Z</lastmod>
   </url>
   <url>
     <loc>https://tiffanie.quarto.pub/tiffanie_lab_blog/posts/pytorch_tensor/index.html</loc>
-    <lastmod>2023-06-26T03:39:24.094Z</lastmod>
+    <lastmod>2023-06-26T04:25:45.262Z</lastmod>
   </url>
   <url>
     <loc>https://tiffanie.quarto.pub/tiffanie_lab_blog/posts/pytorch_nn/index.html</loc>
-    <lastmod>2023-06-26T03:39:24.529Z</lastmod>
+    <lastmod>2023-06-26T04:25:45.703Z</lastmod>
   </url>
   <url>
     <loc>https://tiffanie.quarto.pub/tiffanie_lab_blog/posts/population_structure/index.html</loc>
-    <lastmod>2023-06-26T03:39:25.195Z</lastmod>
+    <lastmod>2023-06-26T04:25:46.304Z</lastmod>
   </url>
   <url>
     <loc>https://tiffanie.quarto.pub/tiffanie_lab_blog/posts/w1_thesis_updates/index.html</loc>
-    <lastmod>2023-06-26T03:39:25.555Z</lastmod>
+    <lastmod>2023-06-26T04:25:46.699Z</lastmod>
   </url>
   <url>
     <loc>https://tiffanie.quarto.pub/tiffanie_lab_blog/posts/functional_annotation_gwas/index.html</loc>
-    <lastmod>2023-06-26T03:39:26.092Z</lastmod>
+    <lastmod>2023-06-26T04:25:47.269Z</lastmod>
   </url>
   <url>
     <loc>https://tiffanie.quarto.pub/tiffanie_lab_blog/posts/enformer_summary/index.html</loc>
-    <lastmod>2023-06-26T03:39:26.861Z</lastmod>
+    <lastmod>2023-06-26T04:25:47.976Z</lastmod>
   </url>
   <url>
     <loc>https://tiffanie.quarto.pub/tiffanie_lab_blog/posts/w3_thesis_updates/index.html</loc>
-    <lastmod>2023-06-26T03:39:27.198Z</lastmod>
+    <lastmod>2023-06-26T04:25:48.289Z</lastmod>
   </url>
   <url>
     <loc>https://tiffanie.quarto.pub/tiffanie_lab_blog/posts/conduct_gwas/index.html</loc>
-    <lastmod>2023-06-26T03:39:28.179Z</lastmod>
+    <lastmod>2023-06-26T04:25:49.210Z</lastmod>
   </url>
   <url>
     <loc>https://tiffanie.quarto.pub/tiffanie_lab_blog/posts/nn_3b1b/index.html</loc>
-    <lastmod>2023-06-26T03:39:28.695Z</lastmod>
+    <lastmod>2023-06-26T04:25:49.703Z</lastmod>
   </url>
   <url>
     <loc>https://tiffanie.quarto.pub/tiffanie_lab_blog/posts/pytorch_train_classifier/index.html</loc>
-    <lastmod>2023-06-26T03:39:29.145Z</lastmod>
+    <lastmod>2023-06-26T04:25:50.148Z</lastmod>
   </url>
   <url>
     <loc>https://tiffanie.quarto.pub/tiffanie_lab_blog/posts/wine_nn/index.html</loc>
-    <lastmod>2023-06-26T03:39:29.568Z</lastmod>
+    <lastmod>2023-06-26T04:25:50.566Z</lastmod>
   </url>
   <url>
     <loc>https://tiffanie.quarto.pub/tiffanie_lab_blog/posts/pytorch_autograd/index.html</loc>
-    <lastmod>2023-06-26T03:39:30.077Z</lastmod>
+    <lastmod>2023-06-26T04:25:51.044Z</lastmod>
   </url>
   <url>
     <loc>https://tiffanie.quarto.pub/tiffanie_lab_blog/posts/pp_train_test_data/index.html</loc>
-    <lastmod>2023-06-26T03:39:30.379Z</lastmod>
+    <lastmod>2023-06-26T04:25:51.353Z</lastmod>
   </url>
   <url>
     <loc>https://tiffanie.quarto.pub/tiffanie_lab_blog/index.html</loc>
-    <lastmod>2023-06-26T03:39:31.549Z</lastmod>
+    <lastmod>2023-06-26T04:25:52.653Z</lastmod>
   </url>
   <url>
-    <loc>https://tiffanie.quarto.pub/tiffanie_lab_blog/about.html</loc>
-    <lastmod>2023-06-26T03:39:31.836Z</lastmod>
+    <loc>https://tiffanie.quarto.pub/tiffanie_lab_blog/w1.html</loc>
+    <lastmod>2023-06-26T04:25:53.174Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tiffanie.quarto.pub/tiffanie_lab_blog/w3.html</loc>
+    <lastmod>2023-06-26T04:25:53.698Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tiffanie.quarto.pub/tiffanie_lab_blog/w2.html</loc>
+    <lastmod>2023-06-26T04:25:54.453Z</lastmod>
   </url>
 </urlset>

@@ -19,5 +19,36 @@
       "/posts/llm_summary/index.html",
       "/posts/w1_thesis_updates/index.html"
     ]
+  },
+  {
+    "listing": "/w1.html",
+    "items": [
+      "/posts/mx_alg_basics_pt1/index.html",
+      "/posts/pytorch_tensor/index.html",
+      "/posts/llm_summary/index.html",
+      "/posts/w1_thesis_updates/index.html"
+    ]
+  },
+  {
+    "listing": "/w3.html",
+    "items": [
+      "/posts/pp_train_test_data/index.html",
+      "/posts/enformer_summary/index.html",
+      "/posts/w3_thesis_updates/index.html",
+      "/posts/wine_nn/index.html"
+    ]
+  },
+  {
+    "listing": "/w2.html",
+    "items": [
+      "/posts/pytorch_nn/index.html",
+      "/posts/nn_3b1b/index.html",
+      "/posts/pytorch_train_classifier/index.html",
+      "/posts/pytorch_autograd/index.html",
+      "/posts/transcriptome_qgt_lab/index.html",
+      "/posts/functional_annotation_gwas/index.html",
+      "/posts/population_structure/index.html",
+      "/posts/conduct_gwas/index.html"
+    ]
   }
 ]
