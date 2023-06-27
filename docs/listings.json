@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/z2h_micrograd/index.html",
       "/posts/pp_train_test_data/index.html",
       "/posts/enformer_summary/index.html",
       "/posts/w3_thesis_updates/index.html",
@@ -18,6 +19,12 @@
       "/posts/pytorch_tensor/index.html",
       "/posts/llm_summary/index.html",
       "/posts/w1_thesis_updates/index.html"
+    ]
+  },
+  {
+    "listing": "/w4.html",
+    "items": [
+      "/posts/z2h_micrograd/index.html"
     ]
   },
   {
