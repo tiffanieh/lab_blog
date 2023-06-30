@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/z2h_makemore_pt1/index.html",
       "/posts/z2h_micrograd_questions/index.html",
       "/posts/z2h_micrograd/index.html",
       "/posts/pp_train_test_data/index.html",
@@ -25,6 +26,7 @@
   {
     "listing": "/w4.html",
     "items": [
+      "/posts/z2h_makemore_pt1/index.html",
       "/posts/z2h_micrograd_questions/index.html",
       "/posts/z2h_micrograd/index.html"
     ]
