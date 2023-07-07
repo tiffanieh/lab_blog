@@ -2,6 +2,8 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/parallel_scripting_parsl_intro/index.html",
+      "/posts/parsl_intro_demo/index.html",
       "/posts/enformer_usage_hackathon/index.html",
       "/posts/z2h_makemore_pt1/index.html",
       "/posts/z2h_micrograd_questions/index.html",
@@ -27,6 +29,8 @@
   {
     "listing": "/w5.html",
     "items": [
+      "/posts/parallel_scripting_parsl_intro/index.html",
+      "/posts/parsl_intro_demo/index.html",
       "/posts/enformer_usage_hackathon/index.html"
     ]
   },
